@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wedding Invitation | Priya & Vikram</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================================
+       ROSE GOLD THEME VARIABLES
+       ========================================================== */
+    :root {
+      --theme-dark: #4A2525;      /* Deep Rosewood for main text */
+      --theme-main: #B76E79;      /* Classic Rose Gold */
+      --theme-accent: #E0BFB8;    /* Light Rose Gold/Blush for glitters & borders */
+      --theme-light: rgba(253, 247, 247, 0.85); /* Transparent Blush for glass boxes */
+      --theme-gradient: linear-gradient(135deg, #E0BFB8, #B76E79);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body.locked {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--theme-dark);
+      overflow-x: hidden;
+      background-color: #000; /* Fallback color */
+    }
+
+    /* ==========================================================
+       BACKGROUND MOONLIGHT VIDEO
+       ========================================================== */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.85; /* Thoda dark karne ke liye taaki text dikhe */
+    }
+
+    /* ==========================================================
+       1. OPENING INTRO VIDEO 
+       ========================================================== */
+    #opening-screen {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #opening-video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; 
+      touch-action: none;
+    }
+
+    @media screen and (min-width: 768px) {
+      #opening-video {
+        object-fit: cover; 
+      }
+    }
+
+    .tap-to-open-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-end; 
+      justify-content: center;
+      padding-bottom: 20%; 
+    }
+
+    .tap-circle {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: rgba(183, 110, 121, 0.3);
+      border: 2px solid var(--theme-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      z-index: 20;
+    }
+
+    .tap-circle::before, .tap-circle::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid var(--theme-accent);
+      animation: soundWave 2s infinite ease-out;
+    }
+
+    .tap-circle::after {
+      animation-delay: 1s;
+    }
+
+    .tap-circle i {
+      animation: tapPulse 1s infinite alternate;
+    }
+
+    @keyframes soundWave {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    @keyframes tapPulse {
+      0% { transform: scale(0.9); }
+      100% { transform: scale(1.15); }
+    }
+
+    .scroll-down-btn {
+      position: absolute;
+      bottom: 25px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 15;
+      animation: bounceArrow 1.5s infinite;
+    }
+
+    .scroll-down-btn .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--theme-main);
+      border: 2px solid var(--theme-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      box-shadow: 0 0 15px rgba(183, 110, 121, 0.8);
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ==========================================================
+       2. 360° ROTATING MUSIC DISC
+       ========================================================== */
+    .music-btn {
+      position: fixed;
+      bottom: 22px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--theme-gradient);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 12px rgba(183, 110, 121, 0.6);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .music-btn.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .music-btn.playing {
+      animation: spin360 3.5s linear infinite;
+    }
+
+    @keyframes spin360 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ==========================================================
+       SECTIONS & TYPOGRAPHY
+       ========================================================== */
+    section {
+      padding: 30px 16px 15px;
+      max-width: 440px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .sec-title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: clamp(22px, 6vw, 27px);
+      color: var(--theme-dark);
+      text-align: center;
+      margin-bottom: 2px;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+      position: relative;
+    }
+
+    .sec-title::after {
+      content: '❖';
+      display: block;
+      font-size: 13px;
+      margin: 4px auto 10px;
+      color: var(--theme-accent);
+    }
+
+    /* Text Boxes with Glass Effect */
+    .content-box {
+      background: var(--theme-light);
+      backdrop-filter: blur(5px);
+      border: 1.5px solid var(--theme-accent);
+      border-radius: 16px;
+      padding: 24px 18px;
+      box-shadow: 0 6px 20px rgba(74, 37, 37, 0.2);
+      margin-bottom: 20px;
+    }
+
+    .content-title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      color: var(--theme-main);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .content-text {
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 600;
+      color: var(--theme-dark);
+    }
+
+    /* ==========================================================
+       3. TOP INVITATION TEXT & ROSE GOLD SCRATCH CARD
+       ========================================================== */
+    .scratch-reveal-title {
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        color: var(--theme-light); 
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    
+    .scratch-wrapper {
+      position: relative;
+      width: 250px; 
+      height: 220px;
+      margin: 10px auto;
+      clip-path: path('M125,210 C125,210 15,140 15,75 C15,35 45,10 80,10 C105,10 120,25 125,40 C130,25 145,10 170,10 C205,10 235,35 235,75 C235,140 125,210 125,210 Z');
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(74, 37, 37, 0.4);
+    }
+
+    .scratch-secret {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fff, #FDF7F7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .scratch-secret h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 34px;
+      color: var(--theme-main);
+      line-height: 1;
+    }
+
+    .scratch-secret .date-badge {
+      margin-top: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--theme-dark);
+      letter-spacing: 1.5px;
+    }
+
+    #scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 220px;
+      z-index: 2;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    .sparkle-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      display: none;
+    }
+
+    /* Glitter Particle */
+    .glitter-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--theme-accent);
+      border-radius: 50%; /* Made it round for pure glitter look */
+      box-shadow: 0 0 8px rgba(255,255,255,0.8);
+      animation: glitterBlast 1.5s ease-out forwards;
+      transform-origin: center;
+    }
+
+    @keyframes glitterBlast {
+      0% { transform: translate(0, 0) scale(0); opacity: 1; }
+      50% { opacity: 1; transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.5)) scale(1.5); }
+      100% { transform: translate(var(--dx), var(--dy)) scale(0.5); opacity: 0; }
+    }
+    
+    .save-the-date-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 25px;
+        background: var(--theme-gradient); 
+        color: white;
+        border-radius: 20px;
+        font-family: 'Cinzel', serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
+
+    /* ==========================================================
+       4. INTRODUCTION & NEW CONTENT SECTIONS
+       ========================================================== */
+    .shree-symbol {
+      font-size: 22px;
+      color: var(--theme-main);
+      margin-bottom: 4px;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .couple-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(44px, 10vw, 56px);
+      color: var(--theme-dark);
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+      margin: 4px 0 8px;
+      line-height: 1.1;
+    }
+
+    /* ==========================================================
+       5. STACKED CARDS GALLERY
+       ========================================================== */
+    .gallery-wrapper {
+      padding: 40px 0 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .gallery-wrapper .sec-title {
+      margin-bottom: 30px; 
+      color: var(--theme-light); /* Changed to light to stand out on video */
+      text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    }
+
+    .stacked-gallery-container {
+      position: relative;
+      width: 280px;
+      height: 380px;
+      margin: 0 auto 30px;
+      perspective: 1000px;
+    }
+
+    .stacked-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: 3px solid var(--theme-accent);
+      box-shadow: 0 10px 25px rgba(74, 37, 37, 0.4);
+      background: #fff;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .stacked-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stacked-card.active { transform: translateX(0) scale(1) rotate(0deg); z-index: 3; opacity: 1; }
+    .stacked-card.prev-1 { transform: translateX(-35px) scale(0.9) rotate(-4deg); z-index: 2; opacity: 0.85; }
+    .stacked-card.next-1 { transform: translateX(35px) scale(0.9) rotate(4deg); z-index: 2; opacity: 0.85; }
+    .stacked-card.hidden { transform: translateY(-20px) scale(0.8); z-index: 1; opacity: 0; pointer-events: none; }
+
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-arrow-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--theme-gradient);
+      border: 2px solid var(--theme-accent);
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(183, 110, 121, 0.3);
+      transition: transform 0.2s;
+    }
+    .nav-arrow-btn:active { transform: scale(0.9); }
+
+    /* ==========================================================
+       6. TIMELINE WEDDING CEREMONIES
+       ========================================================== */
+    .timeline-container {
+      position: relative;
+      padding-left: 35px; 
+      margin: 30px 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--theme-accent);
+      border-radius: 2px;
+    }
+
+    .timeline-indicator {
+      position: absolute;
+      left: -13.5px;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background: var(--theme-main);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      box-shadow: 0 0 10px var(--theme-accent);
+      transition: top 0.1s ease-out;
+      z-index: 10;
+    }
+
+    .function-card {
+      width: 100%;
+      border: 3px solid var(--theme-accent);
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(74, 37, 37, 0.3);
+      background: #fff;
+      overflow: hidden;
+      margin-bottom: 30px;
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .function-card img { width: 100%; display: block; height: auto; object-fit: cover; }
+    .function-card.slide-left { transform: translateX(-60px); }
+    .function-card.slide-right { transform: translateX(60px); }
+    .function-card.active { opacity: 1; transform: translateX(0); }
+
+    /* ==========================================================
+       7. COLOR CODE (TRENDING THEMES)
+       ========================================================== */
+    .color-palette-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .color-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .color-name {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--theme-dark);
+      letter-spacing: 1px;
+    }
+
+    /* ==========================================================
+       8. VENUE MAP & RSVP SECTION
+       ========================================================== */
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 24px;
+      background: var(--theme-gradient);
+      color: #fff;
+      border: 1.5px solid var(--theme-accent);
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .rsvp-form { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .rsvp-form input, .rsvp-form select {
+      width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.9);
+      border: 1.5px solid var(--theme-accent); border-radius: 8px;
+      color: var(--theme-dark); font-family: inherit; font-size: 13px; font-weight: 600; outline: none;
+    }
+    .rsvp-form input::placeholder { color: #C07C88; }
+    .rsvp-submit-btn {
+      background: var(--theme-gradient); border: 1.5px solid var(--theme-accent);
+      color: #fff; padding: 12px; border-radius: 8px; font-weight: 700;
+      letter-spacing: 1.5px; cursor: pointer; text-transform: uppercase; font-size: 13px;
+    }
+
+    /* ==========================================================
+       9. CLOSING FOOTER
+       ========================================================== */
+    .wedding-footer {
+      text-align: center;
+      padding: 15px 10px 50px; 
+      color: var(--theme-light);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    .wedding-footer .footer-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px; 
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
+    .wedding-footer .footer-names .red-heart {
+      color: #B76E79; /* Rose Gold Heart */
+      font-size: 24px;
+      display: inline-block;
+      animation: heartbeat 1.5s infinite;
+      margin: 0 8px;
+    }
+    .wedding-footer .footer-tagline {
+      font-family: 'Cinzel', serif;
+      font-size: 11px; 
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .closing-line {
+      font-size: 12px;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    .reveal-elem {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: all 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal-elem.active { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- BACKGROUND MOONLIGHT VIDEO -->
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- Background Music Audio -->
+  <audio id="wedding-music" loop>
+    <source src="wedding-music.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- 360° Rotating Music Disc -->
+  <div class="music-btn" id="music-disc" title="Music Controller">
+    <i class="fa-solid fa-compact-disc"></i>
+  </div>
+
+  <!-- 1. OPENING INTRO VIDEO -->
+  <div id="opening-screen">
+    <video id="opening-video" muted playsinline preload="auto">
+      <source src="intro.mp4" type="video/mp4">
+    </video>
+    <div class="tap-to-open-wrap" id="tap-door-overlay">
+      <div class="tap-circle"><i class="fa-solid fa-hand-pointer"></i></div>
+    </div>
+    <a href="#welcome-section" class="scroll-down-btn" id="scroll-down-arrow">
+      <div class="icon-circle"><i class="fa-solid fa-chevron-down"></i></div>
+      <span>Scroll Down</span>
+    </a>
+  </div>
+
+  <!-- Main Website Content -->
+  <div id="main-content">
+
+    <!-- TEXT BEFORE SCRATCH CARD -->
+    <section id="welcome-section" class="reveal-elem">
+      <div class="content-box">
+        <h3 class="content-title">A Journey of Love</h3>
+        <p class="content-text">
+          Under the gentle glow of the moonlight and the blessings of the divine, two souls are ready to intertwine. 
+          We invite you to witness the beautiful beginning of our forever. Your presence will add magic to our most cherished moments.
+        </p>
+      </div>
+    </section>
+
+    <!-- SCRATCH CARD SECTION -->
+    <section id="scratch-section" class="reveal-elem">
+      <h2 class="scratch-reveal-title">Scratch To Reveal <span style="font-size: 14px;">✨</span></h2>
+
+      <div class="scratch-wrapper">
+        <div class="scratch-secret">
+          <h3>Shubh Vivaah</h3>
+          <div class="date-badge">21 MARCH 2027</div>
+        </div>
+        <canvas id="scratch-canvas" width="250" height="220"></canvas>
+        <div class="sparkle-container" id="sparkle-box"></div>
+      </div>
+      
+      <a href="#functions" class="save-the-date-btn"><i class="fa-regular fa-calendar-check"></i> SAVE THE DATE</a>
+    </section>
+
+    <!-- TEXT AFTER SCRATCH CARD (BRIDAL ROOM) -->
+    <section class="reveal-elem">
+      <div class="content-box">
+        <h3 class="content-title">The Bridal Lounge</h3>
+        <p class="content-text">
+          Step into a serene oasis adorned with floral aesthetics and soft lighting. The Bridal Room is a space of calm anticipation, 
+          where laughter echoes, final touches are perfected, and a beautiful transformation unfolds before she walks down the aisle.
+        </p>
+      </div>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section id="intro" class="reveal-elem">
+      <div class="content-box">
+        <span class="shree-symbol">॥ श्री गणेशाय नमः ॥</span>
+        <p style="text-transform: uppercase; letter-spacing: 1.6px; font-size: 10.5px; color: var(--theme-main); font-weight: 700;">Together with their families</p>
+        
+        <h2 class="couple-name">Priya & Vikram</h2>
+        
+        <p class="content-text">
+          Invite you to share in the joy of their wedding celebration. 
+          Your warm presence and blessings will make our union truly auspicious and unforgettable.
+        </p>
+      </div>
+    </section>
+
+    <!-- TEXT BEFORE GALLERY -->
+    <section class="reveal-elem">
+      <div class="content-box">
+        <h3 class="content-title">Glimpses of Us</h3>
+        <p class="content-text">
+          Every love story is beautiful, but ours is our favorite. Take a walk through the beautiful moments we’ve shared leading up to our big day.
+        </p>
+      </div>
+    </section>
+
+    <!-- STACKED CARDS GALLERY -->
+    <div class="gallery-wrapper reveal-elem">
+      <h2 class="sec-title" style="color: #fff;">Sweet Memories</h2>
+      
+      <div class="stacked-gallery-container" id="stacked-gallery">
+        <div class="stacked-card"><img src="gallery (1).png" alt="Memory 1"></div>
+        <div class="stacked-card"><img src="gallery (2).png" alt="Memory 2"></div>
+        <div class="stacked-card"><img src="gallery (3).png" alt="Memory 3"></div>
+        <div class="stacked-card"><img src="gallery (4).png" alt="Memory 4"></div>
+        <div class="stacked-card"><img src="gallery (5).png" alt="Memory 5"></div>
+        <div class="stacked-card"><img src="gallery (6).png" alt="Memory 6"></div>
+      </div>
+
+      <div class="gallery-nav">
+        <button class="nav-arrow-btn" id="stack-prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="nav-arrow-btn" id="stack-next"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- TEXT AFTER GALLERY / BEFORE FUNCTIONS -->
+    <section class="reveal-elem">
+      <div class="content-box">
+        <h3 class="content-title">The Celebration Awaits</h3>
+        <p class="content-text">
+          From the vibrant hues of Haldi to the rhythmic beats of the Sangeet, join us as we honor our traditions and celebrate our union with music, dance, and love.
+        </p>
+      </div>
+    </section>
+
+    <!-- TIMELINE FUNCTIONS -->
+    <section id="functions">
+      <h2 class="sec-title reveal-elem" style="color: #fff;">Ceremonies</h2>
+
+      <div class="timeline-container" id="timeline-container">
+        <div class="timeline-line">
+          <div class="timeline-indicator" id="timeline-indicator">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </div>
+
+        <div class="function-card slide-left"><img src="haldi.png" alt="Haldi Ceremony"></div>
+        <div class="function-card slide-right"><img src="mehendi.png" alt="Mehendi Ceremony"></div>
+        <div class="function-card slide-left"><img src="sangeet.png" alt="Sangeet Night"></div>
+        <div class="function-card slide-right"><img src="wedding.png" alt="The Royal Pheras"></div>
+        <div class="function-card slide-left"><img src="reception.png" alt="Grand Reception"></div>
+      </div>
+    </section>
+
+    <!-- TEXT AFTER FUNCTIONS -->
+    <section class="reveal-elem">
+      <div class="content-box">
+        <h3 class="content-title">A Night to Remember</h3>
+        <p class="content-text">
+          As the stars shine above, we step into our new life surrounded by the people we love most. Thank you for being a part of every beautiful ceremony.
+        </p>
+      </div>
+    </section>
+
+    <!-- TRENDING COLOR CODE SECTION -->
+    <section class="reveal-elem">
+      <div class="content-box">
+        <h3 class="content-title">Wedding Dress Code</h3>
+        <p class="content-text" style="margin-bottom: 12px; font-size: 12px;">
+          Match the vibe of our special day! Here are the trending color themes for the celebration:
+        </p>
+        <div class="color-palette-wrap">
+          <div class="color-swatch">
+            <div class="color-circle" style="background: #E0BFB8;"></div>
+            <span class="color-name">Blush</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-circle" style="background: #B76E79;"></div>
+            <span class="color-name">Rose</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-circle" style="background: #C19A6B;"></div>
+            <span class="color-name">Gold</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-circle" style="background: #2E4741;"></div>
+            <span class="color-name">Emerald</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENUE MAP & RSVP -->
+    <section id="venue-rsvp" class="reveal-elem">
+      <div class="content-box">
+        <i class="fa-solid fa-map-location-dot" style="font-size: 28px; color: var(--theme-main); margin-bottom: 6px;"></i>
+        <h3 class="content-title">Wedding Venue</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.5888280650965!2d72.82283997507765!3d19.125666782088822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9db6040d2fb%3A0x8673f4439c2d76a2!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="250" style="border:0; border-radius: 12px; margin: 12px 0;" allowfullscreen="" loading="lazy"></iframe>
+        <a href="https://maps.google.com" target="_blank" class="map-btn">
+          <i class="fa-solid fa-location-arrow" style="margin-right: 5px;"></i> Open to map
+        </a>
+      </div>
+
+      <div class="content-box">
+        <h3 class="content-title">Confirm Your Presence</h3>
+        <form class="rsvp-form" onsubmit="event.preventDefault(); alert('Thank you! Your RSVP has been confirmed.');">
+          <input type="text" placeholder="Your Full Name" required>
+          <input type="number" placeholder="Number of Guests" min="1" max="10" required>
+          <select required>
+            <option value="" disabled selected>Will you be attending?</option>
+            <option value="yes">Joyfully Accepting</option>
+            <option value="no">Regretfully Declining</option>
+          </select>
+          <button type="submit" class="rsvp-submit-btn">Submit RSVP</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- CLOSING FOOTER -->
+    <footer class="wedding-footer reveal-elem">
+      <h5 class="footer-names">Priya <span class="red-heart">♥</span> Vikram</h5>
+      <p class="footer-tagline">Made with love • See you there</p>
+      <p class="closing-line">Thank you for being a part of our beautiful beginning.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 1. INTRO VIDEO & SCROLL UNLOCK
+    const openVideo = document.getElementById('opening-video');
+    const tapOverlay = document.getElementById('tap-door-overlay');
+    const scrollArrow = document.getElementById('scroll-down-arrow');
+    const audio = document.getElementById('wedding-music');
+    const musicDisc = document.getElementById('music-disc');
+    let isMusicPlaying = false;
+
+    tapOverlay.addEventListener('click', () => {
+      tapOverlay.style.display = 'none';
+      openVideo.play();
+      startMusic();
+    });
+
+    openVideo.addEventListener('ended', () => {
+      document.body.classList.remove('locked');
+      scrollArrow.style.display = 'flex';
+    });
+
+    // 2. 360° MUSIC CONTROLLER
+    function startMusic() {
+      audio.play().then(() => {
+        isMusicPlaying = true;
+        musicDisc.classList.add('active', 'playing');
+        musicDisc.innerHTML = '<i class="fa-solid fa-compact-disc"></i>';
+      }).catch(() => {});
+    }
+
+    function stopMusic() {
+      audio.pause();
+      isMusicPlaying = false;
+      musicDisc.classList.remove('playing');
+      musicDisc.innerHTML = '<i class="fa-solid fa-circle-play"></i>';
+    }
+
+    musicDisc.addEventListener('click', () => {
+      if (isMusicPlaying) stopMusic();
+      else startMusic();
+    });
+
+    // 3. ROSE GOLD GLITTER SCRATCH CARD (NO PETALS, JUST GLITTER)
+    const canvas = document.getElementById('scratch-canvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const sparkleBox = document.getElementById('sparkle-box');
+    let isDrawing = false;
+    let isComplete = false;
+
+    function renderHeartGlitterCover() {
+      // Rose Gold Gradient
+      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      grad.addColorStop(0, '#9B5966'); // Dark Rose
+      grad.addColorStop(0.4, '#B76E79'); // Rose Gold
+      grad.addColorStop(0.7, '#E0BFB8'); // Blush Light
+      grad.addColorStop(1, '#A0522D'); // Sienna/Deep Gold
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Dense Rose Gold & White Glitter Specks
+      for (let i = 0; i < 900; i++) {
+        const rand = Math.random();
+        if (rand > 0.6) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        } else if (rand > 0.3) {
+            ctx.fillStyle = 'rgba(224, 191, 184, 0.85)'; // Blush glitter
+        } else {
+            ctx.fillStyle = 'rgba(183, 110, 121, 0.7)'; // Deep Rose glitter
+        }
+        ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1.8, 1.8);
+      }
+    }
+    renderHeartGlitterCover();
+
+    function scratch(e) {
+      if (!isDrawing || isComplete) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+      const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(x, y, 22, 0, Math.PI * 2);
+      ctx.fill();
+
+      checkCompletion();
+    }
+
+    function checkCompletion() {
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let cleared = 0;
+      for (let i = 3; i < imgData.data.length; i += 16) {
+        if (imgData.data[i] === 0) cleared++;
+      }
+      const total = imgData.data.length / 16;
+      if (cleared / total > 0.42 && !isComplete) {
+        isComplete = true;
+        canvas.style.transition = 'opacity 0.5s ease';
+        canvas.style.opacity = '0';
+        setTimeout(() => canvas.style.display = 'none', 500);
+
+        triggerSparkles();
+      }
+    }
+
+    // PURE GLITTER BLAST ANIMATION (CIRCULAR SPARKS)
+    function triggerSparkles() {
+      sparkleBox.style.display = 'block';
+      
+      for (let i = 0; i < 60; i++) { 
+        const glitter = document.createElement('div');
+        glitter.className = 'glitter-particle';
+        
+        glitter.style.left = '50%';
+        glitter.style.top = '50%';
+        
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 120 + 40; 
+        const dx = Math.cos(angle) * distance + 'px';
+        const dy = (Math.sin(angle) * distance + 80) + 'px'; 
+
+        glitter.style.setProperty('--dx', dx);
+        glitter.style.setProperty('--dy', dy);
+        
+        const colors = ['#B76E79', '#E0BFB8', '#FFF', '#9B5966'];
+        glitter.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        // Randomize size slightly for realistic glitter
+        const size = Math.random() * 6 + 3;
+        glitter.style.width = size + 'px';
+        glitter.style.height = size + 'px';
+
+        sparkleBox.appendChild(glitter);
+      }
+      setTimeout(() => sparkleBox.style.display = 'none', 1600); 
+    }
+
+    canvas.addEventListener('mousedown', () => isDrawing = true);
+    window.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mousemove', scratch);
+    canvas.addEventListener('touchstart', () => isDrawing = true);
+    window.addEventListener('touchend', () => isDrawing = false);
+    canvas.addEventListener('touchmove', scratch);
+
+    // 4. STACKED CARDS GALLERY LOGIC
+    const stackCards = document.querySelectorAll('.stacked-card');
+    const totalCards = stackCards.length;
+    let stackCurrentIdx = 0;
+
+    function updateStackedGallery() {
+      stackCards.forEach((card, index) => {
+        card.classList.remove('active', 'prev-1', 'next-1', 'hidden');
+        if (index === stackCurrentIdx) {
+          card.classList.add('active');
+        } else if (index === (stackCurrentIdx - 1 + totalCards) % totalCards) {
+          card.classList.add('prev-1');
+        } else if (index === (stackCurrentIdx + 1) % totalCards) {
+          card.classList.add('next-1');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    updateStackedGallery();
+
+    document.getElementById('stack-next').addEventListener('click', () => {
+      stackCurrentIdx = (stackCurrentIdx + 1) % totalCards;
+      updateStackedGallery();
+    });
+    document.getElementById('stack-prev').addEventListener('click', () => {
+      stackCurrentIdx = (stackCurrentIdx - 1 + totalCards) % totalCards;
+      updateStackedGallery();
+    });
+
+    // 5. TIMELINE SCROLL LOGIC
+    window.addEventListener('scroll', () => {
+      const tlContainer = document.getElementById('timeline-container');
+      const tlIndicator = document.getElementById('timeline-indicator');
+      if (tlContainer && tlIndicator) {
+        const rect = tlContainer.getBoundingClientRect();
+        const winHeight = window.innerHeight;
+        let progress = (winHeight / 2 - rect.top) / rect.height;
+        progress = Math.max(0, Math.min(1, progress));
+        tlIndicator.style.top = (progress * 100) + '%';
+      }
+    });
+
+    // 6. OBSERVER FOR SLIDE IN ELEMENTS
+    const observerOptions = { threshold: 0.12 };
+    const generalObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-elem, .function-card').forEach(el => {
+      generalObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
